@@ -14,6 +14,8 @@ if (!process.env.OPENAI_API_KEY) {
 // }
 
 async function main() {
+  if (process.env.APP_ENV !== "development") return;
+
   for (const record of audit as any) {
     const arr = [...record.lowRisk, ...record.highRisk, ...record.mediumRisk];
 
@@ -32,8 +34,6 @@ async function main() {
           contestName: record.contestName,
         },
       });
-
-    
 
       console.log(x);
       await prisma.$executeRaw`

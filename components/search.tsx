@@ -7,7 +7,7 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/command";
-import { type Pokemon } from "@prisma/client";
+import { type Audits as Pokemon } from "@prisma/client";
 import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { useDebounce } from "use-debounce";
