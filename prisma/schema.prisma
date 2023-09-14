@@ -1,32 +1,162 @@
-datasource db {
-  provider   = "postgresql"
-  url        = env("POSTGRES_PRISMA_URL") // uses connection pooling
-  directUrl  = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
-  extensions = [vector]
-}
-
 generator client {
   provider        = "prisma-client-js"
   previewFeatures = ["postgresqlExtensions"]
 }
 
-model Pokemon {
-  id         String  @id @default(cuid())
-  number     Int
-  name       String
-  type1      String
-  type2      String?
-  total      Int
-  hp         Int
-  attack     Int
-  defense    Int
-  spAtk      Int
-  spDef      Int
-  speed      Int
-  generation Int
-  legendary  Boolean
-
-  embedding Unsupported("vector(1536)")?
-
-  @@map("pokemon")
+datasource db {
+  provider   = "postgresql"
+  url        = env("DATABASE_URL")
+  extensions = [vector]
 }
+
+// directUrl  = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+
+model Audits {
+  id                String                       @id @default(cuid())
+  reportLink        String
+  reportSponsorLogo String
+  publishedDate     DateTime
+  name              String
+  link              String
+  contestName       String
+  embedding         Unsupported("vector(1536)")?
+
+  @@map("reports_data")
+}
+
+// model Pokemon {
+//   id         String  @id @default(cuid())
+//   number     Int
+//   name       String
+//   type1      String
+//   type2      String?
+//   total      Int
+//   hp         Int
+//   attack     Int
+//   defense    Int
+//   spAtk      Int
+//   spDef      Int
+//   speed      Int
+//   generation Int
+//   legendary  Boolean
+
+//   embedding Unsupported("vector(1536)")?
+
+//   @@map("pokemon")
+// }
+
+// generator client {
+//   provider = "prisma-client-js"
+// }
+
+// datasource db {
+//   provider = "mongodb"
+//   url      = env("DATABASE_URL")
+// }
+
+// model Tweet {
+//   id         String   @id @default(auto()) @map("_id") @db.ObjectId
+//   content    String
+//   date       DateTime
+//   profileUrl String
+//   tweetLikes Int      @map("likesCount")
+//   url        String
+//   username   String   @map("userName")
+//   tweet      String   @map("tweetId")
+//   likes      Like[]
+
+//   @@map("tweets_data")
+// }
+
+// model Like {
+//   id      String @id @default(auto()) @map("_id") @db.ObjectId
+//   tweetId String @map("tweet_id") @db.ObjectId
+//   userId  String @map("user_id") @db.ObjectId
+//   tweet   Tweet  @relation(fields: [tweetId], references: [id], onDelete: Cascade)
+//   user    User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+//   @@map("likes")
+// }
+
+// model Account {
+//   id                       String  @id @default(auto()) @map("_id") @db.ObjectId
+//   userId                   String  @map("user_id") @db.ObjectId
+//   type                     String
+//   provider                 String
+//   providerAccountId        String  @map("provider_account_id")
+//   refresh_token            String? @db.String
+//   access_token             String? @db.String
+//   refresh_token_expires_in Int?
+//   expires_at               Int?
+//   token_type               String?
+//   scope                    String?
+//   id_token                 String? @db.String
+//   session_state            String?
+
+//   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+//   @@unique([provider, providerAccountId])
+//   @@map("accounts")
+// }
+
+// model Session {
+//   id           String   @id @default(auto()) @map("_id") @db.ObjectId
+//   sessionToken String   @unique @map("session_token")
+//   userId       String   @map("user_id") @db.ObjectId
+//   expires      DateTime
+//   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+//   @@map("sessions")
+// }
+
+// model User {
+//   id            String    @id @default(auto()) @map("_id") @db.ObjectId
+//   name          String?
+//   email         String?   @unique
+//   emailVerified DateTime? @map("email_verified")
+//   image         String?
+//   accounts      Account[]
+//   sessions      Session[]
+//   likes         Like[]
+
+//   @@map("users")
+// }
+
+// model VerificationToken {
+//   identifier String   @id @default(auto()) @map("_id") @db.ObjectId
+//   token      String   @unique
+//   expires    DateTime
+
+//   @@unique([identifier, token])
+//   @@map("verification_tokens")
+// }
+
+// model Audit {
+//   id                String   @id @default(auto()) @map("_id") @db.ObjectId
+//   reportLink        String
+//   reportSponsorLogo String
+//   publishedDate     DateTime
+//   highRisk          Json[]
+//   mediumRisk        Json[]
+//   lowRisk           Json[]
+//   gasOptimization   Json[]
+//   contestName       String
+
+//   @@map("reports_data")
+// }
+
+// model Job {
+//   id String @id @default(auto()) @map("_id") @db.ObjectId
+
+//   jobTitle               String
+//   jobLocation            String
+//   minSalaryRange         Int
+//   maxSalaryRange         Int
+//   role                   String
+//   jobApplyPageUrl        String
+//   jobCreatedTimestamp    Int
+//   aiDetectedTechnologies String
+//   companyName            String
+
+//   @@map("jobs")
+// }

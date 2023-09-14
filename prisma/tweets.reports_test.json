@@ -1,0 +1,43 @@
+[
+  {
+    "reportLink": "https://code4rena.com/reports/2022-11-ens",
+    "reportSponsorLogo": "https://code4rena.com/_next/image?url=https%3A%2F%2Fraw.githubusercontent.com%2Fcode-423n4%2Fcode423n4.com%2Fmain%2F_data%2Forgs%2Favatars%2Fens.jpeg&w=256&q=75",
+    "publishedDate": "2023-05-26T00:00:00Z",
+    "highRisk": [
+      {
+        "Name": "[H-01] PARENT_CANNOT_CONTROL and CANNOT_CREATE_SUBDOMAIN fuses can be bypassed",
+        "Link": "https://code4rena.com/reports/2022-11-ens#h-01-parent_cannot_control-and-cannot_create_subdomain-fuses-can-be-bypassed"
+      },
+      {
+        "Name": "[H-02] During the deprecation period where both .eth registrar controllers are active, a crafted hack can be launched and cause the same malicious consequences of [H-01] even if [H-01] is properly fixed",
+        "Link": "https://code4rena.com/reports/2022-11-ens#h-02-during-the-deprecation-period-where-both-eth-registrar-controllers-are-active-a-crafted-hack-can-be-launched-and-cause-the-same-malicious-consequences-of-h-01-even-if-h-01-is-properly-fixed"
+      }
+    ],
+    "mediumRisk": [
+      {
+        "Name": "[M-01] NameWrapper: Cannot prevent transfer while upgrade even with CANNOT_TRANSFER fuse regardless of the upgraded NameWrapper’s implementation",
+        "Link": "https://code4rena.com/reports/2022-11-ens#m-01-namewrapper-cannot-prevent-transfer-while-upgrade-even-with-cannot_transfer-fuse-regardless-of-the-upgraded-namewrappers-implementation"
+      },
+      {
+        "Name": "[M-02] NameWrapper: expired names behave unwrapped",
+        "Link": "https://code4rena.com/reports/2022-11-ens#m-02-namewrapper-expired-names-behave-unwrapped"
+      },
+      {
+        "Name": "[M-03] NameWrapper: Wrapped to Unregistered to ignore PARENT_CANNOT_CONTROL",
+        "Link": "https://code4rena.com/reports/2022-11-ens#m-03-namewrapper-wrapped-to-unregistered-to-ignore-parent_cannot_control"
+      }
+    ],
+    "lowRisk": [
+      {
+        "Name": "L-01 NameWrapper: Missing isWrapped function",
+        "Link": "https://code4rena.com/reports/2022-11-ens#l-01-namewrapper-missing-iswrapped-function"
+      },
+      {
+        "Name": "L-02 NameWrapper: upgrade does not revert when called with ETH2LD",
+        "Link": "https://code4rena.com/reports/2022-11-ens#l-02-namewrapper-upgrade-does-not-revert-when-called-with-eth2ld"
+      }
+    ],
+    "gasOptimization": [],
+    "contestName": "ENS - Versus contest"
+  }
+]
