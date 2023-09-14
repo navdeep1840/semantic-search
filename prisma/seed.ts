@@ -33,9 +33,7 @@ async function main() {
         },
       });
 
-      // "prisma": {
-      //   "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
-      // },
+    
 
       console.log(x);
       await prisma.$executeRaw`
